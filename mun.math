@@ -1,0 +1,19 @@
+out: Δv_p
+out: Δt
+out: Δθ
+
+r = Parent.R
+Δv_p = orbital_velocity(Mun.Alt + r, Craft.Alt + r, Craft.Alt + r) - Navball.OrbitalVelocity
+
+v_mun = 1 / √((Mun.Alt + r)^3 / Kerbin.μ) * (180/π)
+v = 1 / √((Craft.Alt + r)^3 / Parent.μ) * (180/π)
+
+a_trans = (Mun.Alt + Craft.Alt + 2*r) / 2
+T_trans = π * √(a_trans^3 / Kerbin.μ)
+
+φ = 180 - v_mun * T_trans
+
+Δθ = (Mun.θ + Mun.ω + Mun.Ω) - (Craft.θ + Craft.ω + Craft.Ω)
+Δθ = (Δθ + 2*360) % 360
+
+Δt = (Δθ - φ + 2*360) % 360 / (v - v_mun)

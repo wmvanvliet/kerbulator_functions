@@ -1,0 +1,11 @@
+out: φ "Phase angle"
+out: Δv_p "Δv needed for burn"
+out: Δt
+
+r1 = Craft.Alt + Parent.R
+r2 = Mun.Alt + Parent.R
+a = (r1 + r2) / 2
+
+φ = 180 * (1 - (a/r2)^1.5)
+Δv_p = orbital_velocity(Craft.Alt, Mun.Alt, Craft.Alt) - Craft.Vel
+Δt = 60

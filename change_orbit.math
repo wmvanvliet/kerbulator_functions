@@ -1,0 +1,28 @@
+in: theta1
+in: pe2
+in: theta2
+
+out: dv_r
+out: dv_p
+out: dt
+
+pe1 = Craft.Pe + Parent.R
+ap1 = Craft.Ap + Parent.R
+ecc1 = eccentricity(ap1, pe1)
+
+ecc2 = eccentricity(ap2, pe2)
+
+r = alt(ap1, pe1, theta1)
+ap2 = 
+
+phi1 = flight_angle(ap1, pe1, theta1)
+phi2 = flight_angle(ap2, pe2, theta2)
+
+dir1 = [0, 1]
+dir2 = [-sin (phi1 + phi2), cos (phi1 + phi2)]
+
+v1 = orbital_velocity(ap1, pe1, r) * dir1
+v2 = orbital_velocity(ap2, pe2, r) * dir2
+
+dv_r, dv_p = v2 - v1
+dt = Craft.TimeToAp

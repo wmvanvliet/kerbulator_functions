@@ -1,0 +1,7 @@
+out: dv_p
+out: dt
+
+v1=orbital_velocity(Craft.Ap + Parent.R, Craft.Pe + Parent.R,Craft.Pe + Parent.R)
+v2=orbital_velocity(Craft.Pe + Parent.R,Craft.Pe + Parent.R,Craft.Pe + Parent.R)
+dv_p=v2-v1
+dt=Craft.TimeToPe

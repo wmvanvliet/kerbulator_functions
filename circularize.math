@@ -1,0 +1,14 @@
+out: Δv_p "Required increase in speed in prograde direction"
+out: Δt "Time at which to initiate circularization burn"
+
+a = (Craft.Pe + Craft.Ap + 2*Parent.R) / 2
+r = Craft.Ap + Parent.R
+
+# Calculate required Δv
+v1 = √( Parent.μ * (2/r  - 1/a) )
+v2 = √( Parent.μ / r )
+Δv_p = v2 - v1
+
+# Burn at apoapsis
+Δt = Craft.TimeToAp
+

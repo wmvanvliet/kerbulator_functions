@@ -1,0 +1,28 @@
+in: Ap 
+in: Pe
+in: θ_0
+in: Δt
+out: θ
+
+ecc = eccentricity(Ap, Pe)
+a = (Ap + Pe) / 2
+
+E_0 = acos( (ecc + cos θ_0) / (1 + ecc * cos θ_0) )
+
+M_0 = E_0 - ecc * sin E_0
+M_0 = M_0 + floor(θ_0 / pi) * 2 * (pi - M_0)
+
+n = √(Parent.μ / a^3)
+M = wrap(M_0 + n * Δt)
+
+# Low accuracy estimate
+θ = M + 2* ecc * sin M + 1.25 * ecc^2 * sin(2*M)
+
+# Use estimate as starting point for numeric approximation
+E = acos( (ecc + cos θ) / (1 + ecc * cos θ) )
+
+# Use numerical approximation
+E: E - ecc * sin E = M
+
+θ = acos( (cos E - ecc) / (1 - ecc * cos E) )
+θ = θ + floor(M / pi) * 2 * (pi - θ)

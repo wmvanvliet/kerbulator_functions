@@ -1,0 +1,8 @@
+in: Ap
+in: Pe
+in: M0
+in: t
+out: M
+
+a = (Ap + Pe) / 2
+M = wrap(M0 + t * √(Parent.μ / a^3) )

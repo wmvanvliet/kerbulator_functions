@@ -1,0 +1,17 @@
+out: inc "Inclination of our orbit"
+out: v "Orbital velocity"
+out: r "Altitude"
+out: ecc "Eccentricity"
+out: θ
+out: pos
+
+Ap = Craft.Ap + Parent.R
+Pe = Craft.Pe + Parent.R
+Alt = Craft.Alt + Parent.R
+
+inc = round(Craft.Inc, 2)
+r = round(Craft.Alt, 0)
+ecc = round(eccentricity(Ap, Pe), 2)
+v = round(orbital_velocity(Ap, Pe, Alt), 1)
+θ = round(Craft.θ * (pi/180), 2)
+pos = [Craft.Pos.x, Craft.Pos.y, Craft.Pos.z]

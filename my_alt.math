@@ -1,0 +1,3 @@
+out: r
+pos, vel = current_pos
+r = |pos| - Parent.R

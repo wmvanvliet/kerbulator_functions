@@ -1,0 +1,11 @@
+in: pos 
+in: vel
+in: Ap
+in: Pe
+in: θ
+out: pos
+out: vel
+
+ecc = eccentricity(Ap, Pe)
+φ = atan( (ecc * sin θ) / (1 + ecc * cos θ) )
+vel = dot(vel, rotZ(θ + pi/2 - φ))

@@ -1,0 +1,19 @@
+in: R
+in: ω
+in: Ω
+in: θ
+in: i
+in: ecc
+out: Q
+
+
+#Q = dot(R, rotZ(Ω))
+#Q = dot(Q, rotX(i))
+#Q = dot(Q, rotZ(ω))
+Q = dot(R, dot(dot(rotZ(), rotX(-i)), rotZ(-Ω)))
+
+# At this point, the coordinates are in local carthesian
+
+# Final conversion to craft coordinates
+φ = atan( (ecc * sin θ) / (1 + ecc * cos θ) )
+#Q = dot(Q, rotZ(-θ - π - φ))

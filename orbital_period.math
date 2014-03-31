@@ -1,0 +1,3 @@
+out: T "Time to complete an orbit"
+a = (Craft.Pe + Craft.Ap + 2*Parent.R) / 2
+T = 2*pi* √(a^3 / Parent.μ)

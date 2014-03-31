@@ -1,0 +1,21 @@
+in: Ap
+in: Pe
+in: θ
+in: ω
+in: Ω
+in: i
+out: pos
+out: vel
+
+pos, vel = to_local_carthesian(Ap, Pe, θ)
+
+#R = dot(R, rotZ(-ω))
+#R = dot(R, rotX(-i))
+#R = dot(R, rotZ(-Ω))
+
+#pos = dot(pos, dot(dot(rotZ(-ω), rotX(-i)), rotZ(-Ω)))
+#vel = dot(vel, dot(dot(rotZ(-ω), rotX(-i)), rotZ(-Ω)))
+
+R = dot(dot(rotZ(-ω), rotX(-i)), rotZ(-Ω))
+pos = dot(pos, R)
+vel = dot(vel, R)

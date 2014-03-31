@@ -1,0 +1,3 @@
+out: t
+t = flight_time(Craft.Ap + Parent.R, Craft.Pe + Parent.R, Craft.TrueAnomaly * (pi/180), 0)
+t = round(t, 2)

@@ -1,0 +1,10 @@
+.θ * (pi/180)
+
+pos2, vel2 = to_carthesian2(\
+	Target.Ap + Parent.R,\
+    Target.Pe + Parent.R,\
+    θ,\
+    Target.ω * (pi/180),\
+    Target.Ω * (pi/180),\
+    Target.Inc * (pi/180)\
+)

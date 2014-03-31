@@ -1,0 +1,1 @@
+v = orbital_velocity(Craft.Pe, Craft.Ap, Craft.Alt)

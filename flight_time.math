@@ -1,0 +1,22 @@
+in: Ap
+in: Pe
+in: θ1
+in: θ2
+out: t
+
+θ1 = wrap θ1
+θ2 = wrap θ2
+
+a = (Ap + Pe) / 2
+ecc = eccentricity(Ap, Pe)
+
+E1 = acos( (ecc + cos θ1) / (1 + ecc * cos θ1) )
+E2 = acos( (ecc + cos θ2) / (1 + ecc * cos θ2) )
+
+M1 = E1 - ecc * sin E1
+M2 = E2 - ecc * sin E2
+
+n = √(Parent.μ / a^3)
+
+ΔM = |M2 - M1|
+t = ΔM / n / 60

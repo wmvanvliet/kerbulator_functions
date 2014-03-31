@@ -1,0 +1,11 @@
+in: R
+out: ω
+out: Ω
+out: θ
+out: i
+out: Alt
+
+R = to_local_carthesian(θ, Alt)
+R = dot(rotZ(-Ω), R)
+R = dot(rotY(-i), R)
+R = dot(rotZ(-ω), R)

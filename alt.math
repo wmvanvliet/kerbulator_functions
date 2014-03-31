@@ -1,0 +1,8 @@
+in: Ap "Apoapsis of orbit"
+in: Pe "Periapsis of orbit"
+in: θ "True anomaly of craft"
+out: r "Altitide of craft"
+
+a = (Ap + Pe) / 2
+ecc = eccentricity(Ap, Pe)
+r = (a * (1 - ecc^2)) / (1 + ecc * cos θ)

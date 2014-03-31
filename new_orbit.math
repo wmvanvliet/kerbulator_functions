@@ -1,0 +1,37 @@
+in: new_ap "New apoapsis"
+in: theta "True anomaly at which to change"
+out: dv_r
+out: dv_n
+out: dv_p
+out: dt
+out: v2
+out: r2
+out: phi1
+out: phi2
+
+dt = 10
+
+pe = Craft.Pe + Parent.R
+ap1 = Craft.Ap + Parent.R
+ap2 = new_ap + Parent.R
+
+a1 = (pe + ap1) / 2
+e1 = eccentricity(Craft.Pe, Craft.Ap)
+
+theta = theta * (pi/180)
+r = (a1 * (1 - e1^2)) / (1 + e1 * cos theta)
+r2 = r - Parent.R
+
+e2 = eccentricity(r - Parent.R, new_ap)
+a2 = (r + ap2) / 2
+
+phi1 = flight_angle(e1, theta)
+v1 = sqrt(Parent.mu * (2/r - 1/a1))
+
+phi2 = flight_angle(e2, 0)
+v2 = sqrt(Parent.mu * (2/r - 1/a2))
+
+phi2 = pi/2 + (pi/2 - phi2)
+dV = (v2 - v1) * [sin(phi2), 0, cos(phi2)]
+
+dv_r, dv_n, dv_p = dV

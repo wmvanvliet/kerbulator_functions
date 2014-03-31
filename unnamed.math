@@ -1,0 +1,9 @@
+out: Δv_r
+out: Δv_n
+out: Δv_p
+out: Δt
+
+Δv_r = 0
+Δv_n = 0
+Δv_p = 0
+Δt = 0

@@ -1,0 +1,29 @@
+out: my_θ
+out: target_θ
+out: my_pos
+out: target_pos
+out: debug
+
+my_θ = Craft.Inter1.θ * (pi/180)
+
+my_pos, my_vel = to_carthesian2(\
+	Craft.Ap + Parent.R,\
+    Craft.Pe + Parent.R,\
+    my_θ,\
+    Craft.ω * (pi/180),\
+    Craft.Ω * (pi/180),\
+    Craft.Inc * (pi/180)\
+)
+
+target_θ = ((Craft.Inter1.θ + Craft.Ω + Craft.ω) - (Target.Ω + Target.ω)) * (pi/180)
+
+target_pos, target_vel = to_carthesian2(\
+	Target.Ap + Parent.R,\
+    Target.Pe + Parent.R,\
+    target_θ,\
+    Target.ω * (pi/180),\
+    Target.Ω * (pi/180),\
+    Target.Inc * (pi/180)\
+)
+
+debug = [|my_pos|, |target_pos|] - Parent.R

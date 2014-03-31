@@ -1,0 +1,6 @@
+in: Ap "Apoapsis"
+in: Pe "Periapsis"
+out: ecc "Eccentricity of orbit"
+
+a = (Ap + Pe) / 2
+ecc = 1 - Pe / a

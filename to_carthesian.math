@@ -1,0 +1,11 @@
+in: ω
+in: Ω
+in: θ
+in: i
+in: Alt
+out: R
+
+θ = θ + ω
+R = Alt * [cos Ω * cos θ - sin Ω * sin θ * cos i, \
+           sin Ω * cos θ + cos Ω * sin θ * cos i, \
+           sin i * sin θ]

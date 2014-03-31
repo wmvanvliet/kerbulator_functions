@@ -1,0 +1,8 @@
+in: Ap "Apoapsis of orbit"
+in: Pe "Periapsis of orbit"
+in: θ "True anomaly of craft"
+out: φ "Flight angle of craft"
+
+ecc = eccentricity(Ap, Pe)
+φ = atan( (ecc * sin θ) / (1 + ecc * cos θ) )
+

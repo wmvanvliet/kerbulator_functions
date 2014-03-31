@@ -1,0 +1,8 @@
+in: Ap
+in: Pe
+in: Alt
+out: v
+
+# Formula describing the speed of an object orbiting a planet
+a = (Ap + Pe) / 2
+v = √( Parent.μ * (2/Alt - 1/a) )
