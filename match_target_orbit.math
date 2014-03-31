@@ -1,8 +1,9 @@
-out: my_θ
-out: target_θ
-out: my_pos
-out: target_pos
-out: debug
+out: dt
+out: dv_p
+out: dv_r
+out: dv_n
+
+dt = Craft.Inter1.dt
 
 my_θ = Craft.Inter1.θ * (pi/180)
 
@@ -26,4 +27,16 @@ target_pos, target_vel = to_carthesian2(\
     Target.Inc * (pi/180)\
 )
 
-debug = [|my_pos|, |target_pos|] - Parent.R
+pos, dv = carthesian_to_craft(\
+	my_pos,\
+	target_vel - my_vel,\
+	Craft.Ap + Parent.R,\
+    Craft.Pe + Parent.R,\
+    my_θ,\
+    Craft.ω * (pi/180),\
+    Craft.Ω * (pi/180),\
+    Craft.Inc * (pi/180)\
+)
+
+dv_p, dv_r, dv_n = dv
+dv_n = -dv_n
