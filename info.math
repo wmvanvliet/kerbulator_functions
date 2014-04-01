@@ -2,8 +2,8 @@ out: inc "Inclination of our orbit"
 out: v "Orbital velocity"
 out: r "Altitude"
 out: ecc "Eccentricity"
-out: θ
-out: pos
+out: θ "True anomaly"
+out: pos "Carthesian position"
 
 Ap = Craft.Ap + Parent.R
 Pe = Craft.Pe + Parent.R

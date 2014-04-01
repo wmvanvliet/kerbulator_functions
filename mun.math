@@ -1,19 +1,27 @@
-out: Δv_p
-out: Δt
-out: Δθ
+out: Δv_p "Needed Δv change in prograde direction"
+out: Δt "Time (s) until burn"
 
 r = Parent.R
+
+# Needed Δv for orbital insertion
 Δv_p = orbital_velocity(Mun.Alt + r, Craft.Alt + r, Craft.Alt + r) - Navball.OrbitalVelocity
 
+# Angular speed of the Mun (in radians)
 v_mun = 1 / √((Mun.Alt + r)^3 / Kerbin.μ) * (180/π)
+
+# Our angular speed (in radians)
 v = 1 / √((Craft.Alt + r)^3 / Parent.μ) * (180/π)
 
+# Time it will take to transfer to Mun orbit
 a_trans = (Mun.Alt + Craft.Alt + 2*r) / 2
 T_trans = π * √(a_trans^3 / Kerbin.μ)
 
+# Required phase angle
 φ = 180 - v_mun * T_trans
 
+# Current angle
 Δθ = (Mun.θ + Mun.ω + Mun.Ω) - (Craft.θ + Craft.ω + Craft.Ω)
 Δθ = (Δθ + 2*360) % 360
 
+# Time until required phase angle is reached
 Δt = (Δθ - φ + 2*360) % 360 / (v - v_mun)

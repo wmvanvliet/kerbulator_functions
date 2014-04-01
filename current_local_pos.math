@@ -1,7 +1,0 @@
-out: pos
-out: vel
-
-pos, vel = to_local_carthesian(\
-	Craft.Ap + Parent.R,  \
-	Craft.Pe + Parent.R,  \
-	Craft.θ * (pi/180)) / 1000

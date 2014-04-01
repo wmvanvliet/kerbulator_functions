@@ -1,22 +1,47 @@
-in: t
+in: dt
+in: trans
 out: dv_p
 out: dv_r
 out: dv_n
+out: dt
+out: err
+out: p_start
 
-pos1, vel1 = current_pos
+my_θ = true_anomaly(Craft.Ap + Parent.R, Craft.Pe + Parent.R, Craft.θ * (pi/180), dt)
+target_θ = true_anomaly(Target.Ap + Parent.R, Target.Pe + Parent.R, Target.θ * (pi/180), dt+trans)
 
-θ = true_anomaly(Target.Ap + Parent.R, Target.Pe + Parent.R, Target.θ * (pi/180), t)
+pos1, vel1 = to_carthesian2(\
+	Craft.Ap + Parent.R,\
+    Craft.Pe + Parent.R,\
+    my_θ,\
+    Craft.ω * (pi/180),\
+    Craft.Ω * (pi/180),\
+    Craft.Inc * (pi/180)\
+)
+
 
 pos2, vel2 = to_carthesian2(\
 	Target.Ap + Parent.R,\
     Target.Pe + Parent.R,\
-    θ,\
+    target_θ,\
     Target.ω * (pi/180),\
     Target.Ω * (pi/180),\
     Target.Inc * (pi/180)\
 )
 
-new_vel = gauss(t, pos1, pos2)
+new_vel, err, p_start = gauss(trans, pos1, pos2)
 
-pos, dv = carthesian_to_craft(pos1, new_vel-vel1, Craft.Ap + Parent.R, Craft.Pe + Parent.R, Craft.θ * (pi/180), Craft.ω * (pi/180), Craft.Ω * (pi/180), Craft.Inc * (pi/180))
+pos, dv = carthesian_to_craft(\
+	pos1,\
+	new_vel - vel1,\
+	Craft.Ap + Parent.R,\
+    Craft.Pe + Parent.R,\
+    my_θ,\
+    Craft.ω * (pi/180),\
+    Craft.Ω * (pi/180),\
+    Craft.Inc * (pi/180)\
+)
+
 dv_p, dv_r, dv_n = dv
+dv_r = -dv_r
+dv_n = -dv_n

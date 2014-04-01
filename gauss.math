@@ -1,7 +1,9 @@
-in: t
+in: t "Some t"
 in: v_r1
 in: v_r2
 out: v1
+out: err
+out: p_start
 
 r1 = |v_r1|
 r2 = |v_r2|
@@ -16,7 +18,9 @@ p_i = k / (l + √(2*m))
 p_ii = k / (l - √(2*m))
 
 # First guess for p
-p = (p_i + p_ii) / 2
+p_start = (p_i + p_ii) / 2
+
+p = p_start
 
 # Use helper function in order to do numerical approximation of p
 # Read the code of that function to continue with the problem
@@ -24,6 +28,9 @@ p: t_from_p(r1, r2, dnu, k, l, m, p) = t
 
 # Calculate a from the estimated p parameter
 a = m × k × p / ((2 × m - l^2) × p^2 + 2 × k × l × p - k^2)
+
+# Calculate err
+err = t - t_from_p(r1, r2, dnu, k, l, m, p)
 
 # Calculate velocity vector
 f = 1 - r2 / p × (1 - cos dnu)

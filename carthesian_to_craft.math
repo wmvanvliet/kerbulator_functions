@@ -9,10 +9,15 @@ in: i
 out: pos
 out: vel
 
-pos = dot(pos, dot(dot(rotZ(ω), rotX(i)), rotZ(Ω)))
-vel = dot(vel, dot(dot(rotZ(ω), rotX(i)), rotZ(Ω)))
+R = dot(dot(rotZ(ω), rotX(i)), rotZ(Ω))
+pos = dot(pos, R)
+vel = dot(vel, R)
+
+#pos = dot(pos, dot(dot(rotZ(ω), rotX(i)), rotZ(Ω)))
+#vel = dot(vel, dot(dot(rotZ(ω), rotX(i)), rotZ(Ω)))
 
 # Final conversion to craft coordinates
 ecc = eccentricity(Ap, Pe)
 φ = atan( (ecc * sin θ) / (1 + ecc * cos θ) )
+
 vel = dot(vel, rotZ(θ + pi/2 - φ))
