@@ -9,7 +9,7 @@ in: i
 out: pos
 out: vel
 
-R = dot(dot(rotZ(ω), rotX(i)), rotZ(Ω))
+R = dot(dot(rotZ(Ω), rotX(i)), rotZ(ω))
 pos = dot(pos, R)
 vel = dot(vel, R)
 
