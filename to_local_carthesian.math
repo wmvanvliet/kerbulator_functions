@@ -8,6 +8,6 @@ a = (Ap + Pe) / 2
 ecc = eccentricity(Ap, Pe)
 n = √(Parent.μ / a^3)
 r = alt(Ap, Pe, θ)
-pos = r * [cos θ, sin θ, 0]
 
+pos = r * [cos θ, sin θ, 0]
 vel = (n*a / √(1 - ecc^2)) * [-sin θ, ecc + cos θ, 0]
