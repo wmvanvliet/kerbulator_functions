@@ -3,7 +3,6 @@ in: v_r1
 in: v_r2
 out: v1
 out: err
-out: p_start
 
 r1 = |v_r1|
 r2 = |v_r2|
@@ -18,9 +17,7 @@ p_i = k / (l + √(2*m))
 p_ii = k / (l - √(2*m))
 
 # First guess for p
-p_start = (p_i + p_ii) / 2
-
-p = p_start
+p = (p_i + p_ii) / 2
 
 # Use helper function in order to do numerical approximation of p
 # Read the code of that function to continue with the problem
