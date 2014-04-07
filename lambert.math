@@ -1,0 +1,43 @@
+in: t "Some t"
+in: v_r1
+in: v_r2
+#out: v1
+#out: v2
+out: debug
+
+r1 = |v_r1|
+r2 = |v_r2|
+
+_, _, alpha = cross(v_r1, v_r2)
+
+psi_0 = acos( dot(v_r1, v_r2) / (r1 * r2) )
+
+#ltz = min(alpha, 0)/alpha
+ltz = max(alpha, 0)/alpha
+psi = ltz*360 + sign(-alpha) * psi_0
+
+c = mag(v_r1 - v_r2)
+m = r1 + r2 + c
+n = r1 + r2 - c
+
+sigma = sign(-alpha) * √( (4*r1*r2 / m^2) * cos(psi/2)^2 )
+
+tau =  4*t * √(Parent.mu/m^3)
+tau_p = (2/3) * (1 - sigma^3)
+
+tau_ME = acos(sigma) + sigma * √(1 - sigma^2)
+
+x_1 = sign(tau_ME - tau) * -0.5
+x = x_1
+x: lambert_helper(x) + lambert_helper(sign(alpha) * √(1-sigma^2*(1-x^2))) = tau
+y = sign(alpha) * √(1-sigma^2*(1-x^2))
+
+v_c = √Parent.mu * (y/√n + x/√m)
+v_r = √Parent.mu * (y/√n - x/√m)
+e_c = (v_r2 - v_r1) / c
+
+# Calculate velocity vector
+v1 = v_c * e_c + v_r * norm(v_r1)
+v2 = v_c * e_c - v_r * norm(v_r2)
+
+debug = v1

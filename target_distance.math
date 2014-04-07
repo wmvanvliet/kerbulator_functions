@@ -3,17 +3,15 @@ out: d
 
 pos1, vel1 = current_pos
 
-θ = true_anomaly(Target.Ap + Parent.R, Target.Pe + Parent.R, Target.θ * (pi/180), t)
-
-#θ = Target.θ * (pi/180)
+θ = true_anomaly(Target.Ap + Parent.R, Target.Pe + Parent.R, Target.θ, t)
 
 pos2, vel2 = to_carthesian2(\
 	Target.Ap + Parent.R,\
     Target.Pe + Parent.R,\
     θ,\
-    Target.ω * (pi/180),\
-    Target.Ω * (pi/180),\
-    Target.Inc * (pi/180)\
+    Target.ω,\
+    Target.Ω,\
+    Target.Inc\
 )
 
 d = abs(|pos2 - pos1|)

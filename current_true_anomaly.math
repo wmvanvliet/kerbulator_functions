@@ -1,6 +1,6 @@
 out: θ
 out: x
-θ = true_anomaly(Craft.Ap + Parent.R, Craft.Pe + Parent.R, Craft.TrueAnomaly * (pi/180), 0)
+θ = true_anomaly(Craft.Ap + Parent.R, Craft.Pe + Parent.R, Craft.TrueAnomaly, 0)
 
 x = round(Craft.TrueAnomaly, 1)
-θ = round(θ * (180/pi),1)
+θ = round(θ, 1)
