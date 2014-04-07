@@ -5,26 +5,26 @@ out: dv_n
 
 dt = Craft.Inter1.dt
 
-my_θ = Craft.Inter1.θ * (pi/180)
+my_θ = Craft.Inter1.θ
 
 my_pos, my_vel = to_carthesian2(\
 	Craft.Ap + Parent.R,\
     Craft.Pe + Parent.R,\
     my_θ,\
-    Craft.ω * (pi/180),\
-    Craft.Ω * (pi/180),\
-    Craft.Inc * (pi/180)\
+    Craft.ω,\
+    Craft.Ω,\
+    Craft.Inc\
 )
 
-target_θ = ((Craft.Inter1.θ + Craft.Ω + Craft.ω) - (Target.Ω + Target.ω)) * (pi/180)
+target_θ = (Craft.Inter1.θ + Craft.Ω + Craft.ω) - (Target.Ω + Target.ω)
 
 target_pos, target_vel = to_carthesian2(\
 	Target.Ap + Parent.R,\
     Target.Pe + Parent.R,\
     target_θ,\
-    Target.ω * (pi/180),\
-    Target.Ω * (pi/180),\
-    Target.Inc * (pi/180)\
+    Target.ω,\
+    Target.Ω,\
+    Target.Inc\
 )
 
 pos, dv = carthesian_to_craft(\
@@ -33,11 +33,11 @@ pos, dv = carthesian_to_craft(\
 	Craft.Ap + Parent.R,\
     Craft.Pe + Parent.R,\
     my_θ,\
-    Craft.ω * (pi/180),\
-    Craft.Ω * (pi/180),\
-    Craft.Inc * (pi/180)\
+    Craft.ω,\
+    Craft.Ω,\
+    Craft.Inc\
 )
 
 dv_p, dv_r, dv_n = dv
 dv_n = -dv_n
-#dv_r = -dv_r
+dv_r = -dv_r

@@ -18,7 +18,6 @@ ap2 = new_ap + Parent.R
 a1 = (pe + ap1) / 2
 e1 = eccentricity(Craft.Pe, Craft.Ap)
 
-theta = theta * (pi/180)
 r = (a1 * (1 - e1^2)) / (1 + e1 * cos theta)
 r2 = r - Parent.R
 
@@ -31,7 +30,7 @@ v1 = sqrt(Parent.mu * (2/r - 1/a1))
 phi2 = flight_angle(e2, 0)
 v2 = sqrt(Parent.mu * (2/r - 1/a2))
 
-phi2 = pi/2 + (pi/2 - phi2)
+phi2 = 90 + (90 - phi2)
 dV = (v2 - v1) * [sin(phi2), 0, cos(phi2)]
 
 dv_r, dv_n, dv_p = dV

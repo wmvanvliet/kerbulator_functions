@@ -4,7 +4,7 @@ out: vel
 pos, vel = to_carthesian2(\
 	Craft.Ap + Parent.R,  \
 	Craft.Pe + Parent.R,  \
-	Craft.θ * (pi/180),   \
-	Craft.ω * (pi/180),   \
-	Craft.Ω * (pi/180),   \
-	Craft.Inc * (pi/180))
+	Craft.θ,   \
+	Craft.ω,   \
+	Craft.Ω,   \
+	Craft.Inc)

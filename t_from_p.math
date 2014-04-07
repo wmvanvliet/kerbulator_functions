@@ -7,13 +7,12 @@ in: m
 in: p
 out: t
 
-# Given
 a = m × k × p / ((2 × m - l^2) × p^2 + 2 × k × l × p - k^2)
 
 f = 1 - r2 / p × (1 - cos dnu)
 g = r1 × r2 × sin dnu / √(Parent.mu × p)
-#f_dot =  √(Parent.mu × p) × tan(dnu/2) × ((1 - cos dnu) / p - 1/r1 - 1/r2)
+f_dot =  √(Parent.mu × p) × tan(dnu/2) × ((1 - cos dnu) / p - 1/r1 - 1/r2)
 
-dE = acos(1 - r1 / a × (1 - f))
+dE = acos_rad(1 - r1 / a × (1 - f))
 
-t = g + √(a^3 / Parent.mu) × (dE - sin dE)
+t = g + √(a^3 / Parent.mu) × (dE - sin_rad dE)

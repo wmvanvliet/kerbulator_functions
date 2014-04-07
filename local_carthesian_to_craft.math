@@ -8,4 +8,4 @@ out: vel
 
 ecc = eccentricity(Ap, Pe)
 φ = atan( (ecc * sin θ) / (1 + ecc * cos θ) )
-vel = dot(vel, rotZ(θ + pi/2 - φ))
+vel = dot(vel, rotZ(θ + 90 - φ))

@@ -1,0 +1,55 @@
+in: t "Some t"
+in: v_r1
+in: v_r2
+out: v1
+out: err
+
+r1 = |v_r1|
+r2 = |v_r2|
+
+alpha = [0, 0, 1] * cross(v_r1, v_r2)
+
+psi_0 = acos( dot(v_r1, v_r2) / (r1 * r2) )
+
+ltz = min(alpha, 0)/alpha
+psi = ltz*360 + sign(alpha) psi_0
+
+c = |v_r1 - v_r2|
+m = r1 + r2 + c
+n = r1 + r2 - c
+
+sigma = sign(a) * √( (4*r1*r2 / m^2) * cos(psi/2)^2 )
+
+tau =  4*t * √(Parent.mu/m^3)
+tau_p = (2/3) * (1 - sigma^3)
+
+tau_ME = 180 + acos(sigma) + sigma * √(1 - sigma^2)
+
+x_1 = sign(tau_Me - tau) * 0.5
+
+k = r1 * r2 * (1 - cos psi)
+l = r1 + r2
+
+p_i = k / (l + √(2*m))
+p_ii = k / (l - √(2*m))
+
+# First guess for p
+p = (p_i + p_ii) / 2
+
+p = p_i * 1.1
+#pT = {k/(l + Sqrt[2 m]) 1.1, k/(l - Sqrt[2 m] 0.95)}; 
+
+# Use helper function in order to do numerical approximation of p
+# Read the code of that function to continue with the problem
+p: t_from_p(r1, r2, psi, k, l, m, p) = t
+
+# Calculate a from the estimated p parameter
+a = m × k × p / ((2 × m - l^2) × p^2 + 2 × k × l × p - k^2)
+
+# Calculate err
+err = t - t_from_p(r1, r2, psi, k, l, m, p)
+
+# Calculate velocity vector
+f = 1 - r2 / p × (1 - cos psi)
+g = r1 × r2 × sin psi / √(Parent.mu × p)
+v1 = (v_r2 - f × v_r1)  / g
