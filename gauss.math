@@ -3,7 +3,7 @@ in: v_r1
 in: v_r2
 out: v1
 out: dnu
-out: dnu_t
+out: err
 
 r1 = |v_r1|
 r2 = |v_r2|
@@ -13,10 +13,10 @@ _, _, alpha = cross(v_r1, v_r2)
 
 dnu_0 = acos( dot(v_r1, v_r2) / (r1 * r2) )
 ltz = min(alpha, 0)/alpha
-dnu_t = ltz*2*pi + sign(alpha) * dnu_0
+dnu_t = wrap(ltz*360 + sign(-alpha) * dnu_0)
 
 #dnu = acos( dot(v_r1, v_r2) / (r1 * r2) )
-dnu = wrap(dnu_t)
+dnu = dnu_t
 
 k = r1 * r2 * (1 - cos dnu)
 l = r1 + r2
