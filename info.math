@@ -3,6 +3,10 @@ out: v "Orbital velocity"
 out: r "Altitude"
 out: ecc "Eccentricity"
 out: θ "True anomaly"
+out: φ "Flight path angle"
+out: inter.θ
+out: Target.θ
+out: Target.d
 
 Ap = Craft.Ap + Parent.R
 Pe = Craft.Pe + Parent.R
@@ -13,3 +17,7 @@ r = round(Craft.Alt, 0)
 ecc = round(eccentricity(Ap, Pe), 2)
 v = round(orbital_velocity(Ap, Pe, Alt), 1)
 θ = round(Craft.θ, 2)
+φ = round(flight_angle(Ap, Pe, θ), 2)
+inter.θ = Craft.Inter1.θ * (180/pi)
+Target.θ = Target.θ
+Target.d = target_distance(0)

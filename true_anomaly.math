@@ -28,4 +28,4 @@ E = acos_rad( (ecc + cos_rad θ) / (1 + ecc * cos_rad θ) )
 E: E - ecc * sin_rad E = M
 
 θ = acos( (cos_rad E - ecc) / (1 - ecc * cos_rad E) )
-θ = θ + floor(M / pi) * 2 * (90 - θ)
+θ = θ + floor(M / pi) * 2 * (180 - θ)

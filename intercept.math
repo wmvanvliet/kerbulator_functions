@@ -28,7 +28,7 @@ pos2, vel2 = to_carthesian2(\
     Target.Inc\
 )
 
-new_vel, dnu, debug = gauss(trans, pos1, pos2)
+new_vel, dnu, debug = lambert(trans, pos1, pos2)
 
 pos, dv = carthesian_to_craft(\
 	pos1,\
@@ -42,5 +42,5 @@ pos, dv = carthesian_to_craft(\
 )
 
 dv_p, dv_r, dv_n = dv
-dv_r = -dv_r
+dv_r = dv_r
 dv_n = -dv_n

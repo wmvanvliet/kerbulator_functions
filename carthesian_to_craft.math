@@ -17,7 +17,7 @@ vel = dot(vel, R)
 #vel = dot(vel, dot(dot(rotZ(ω), rotX(i)), rotZ(Ω)))
 
 # Final conversion to craft coordinates
-ecc = eccentricity(Ap, Pe)
-φ = atan( (ecc * sin θ) / (1 + ecc * cos θ) )
-
-vel = dot(vel, rotZ(θ + 90 - φ))
+#ecc = eccentricity(Ap, Pe)
+#φ = atan( (ecc * sin θ) / (1 + ecc * cos θ) )
+φ = flight_angle(Ap, Pe, θ)
+vel = dot(vel, rotZ(90 + θ - φ))
