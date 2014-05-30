@@ -29,7 +29,7 @@ target_pos, target_vel = to_carthesian2(\
 
 pos, dv = carthesian_to_craft(\
 	my_pos,\
-	target_vel - my_vel,\
+    target_vel - my_vel,\
 	Craft.Ap + Parent.R,\
     Craft.Pe + Parent.R,\
     my_θ,\
@@ -40,3 +40,4 @@ pos, dv = carthesian_to_craft(\
 
 dv_p, dv_r, dv_n = dv
 dv_n = -dv_n
+dv_r = -dv_r

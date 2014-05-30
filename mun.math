@@ -4,8 +4,10 @@ out: T_trans
 
 r = Parent.R
 
+p = Mun.R + 10000 # 10 Km above surface
+
 # Needed Δv for orbital insertion
-Δv_p = orbital_velocity(Mun.Alt + r, Craft.Alt + r, Craft.Alt + r) - Navball.OrbitalVelocity
+Δv_p = orbital_velocity(Mun.Alt + r + p, Craft.Alt + r, Craft.Alt + r) - Navball.OrbitalVelocity
 
 # Angular speed of the Mun (in degrees)
 v_mun = 1 / √((Mun.Alt + r)^3 / Kerbin.μ) * (180/π)
@@ -14,7 +16,7 @@ v_mun = 1 / √((Mun.Alt + r)^3 / Kerbin.μ) * (180/π)
 v = 1 / √((Craft.Alt + r)^3 / Parent.μ) * (180/π)
 
 # Time it will take to transfer to Mun orbit
-a_trans = (Mun.Alt + Craft.Alt + 2*r) / 2
+a_trans = (Mun.Alt + Craft.Alt + 2*r + p) / 2
 T_trans = π * √(a_trans^3 / Kerbin.μ)
 
 # Required phase angle

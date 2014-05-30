@@ -2,8 +2,6 @@ out: dv_p
 out: dv_r
 out: dv_n
 out: dv
-
-#pos, vel = current_local_pos
 pos, vel = current_pos
 vel = norm(vel) * 2000
 
